@@ -29,9 +29,9 @@ const geometry = (elem) => {
   const x0 = x1 + w/2;
   const y0 = y1 + h/2;
 
-  console.log('scrollTop: ', elem.scrollTop);
-  console.log('offsetTop: ', elem.offsetTop, ',    offsetParent: ', elem.offsetParent);
-  console.log('offsetParent: ', elem.offsetParent);
+  // console.log('scrollTop: ', elem.scrollTop);
+  // console.log('offsetTop: ', elem.offsetTop, ',    offsetParent: ', elem.offsetParent);
+  // console.log('offsetParent: ', elem.offsetParent);
 
   // ======================================================
 

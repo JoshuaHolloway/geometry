@@ -56,7 +56,14 @@ body {
   position: absolute;
   height: 100px;
   width: 100px;
+}
+.box-1 {
   background: deeppink;
   top: 0px;
   left: 0px;
+}
+.box-2 {
+  background: darkorange;
+  top: 0px;
+  right: 0px;
 }
