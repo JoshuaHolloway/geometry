@@ -67,3 +67,13 @@ body {
   top: 0px;
   right: 0px;
 }
+.box-3 {
+  background: darkorchid;
+  bottom: 0px;
+  right: 0px;
+}
+.box-4 {
+  background: yellow;
+  bottom: 0px;
+  left: 0px;
+}
