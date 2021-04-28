@@ -1,7 +1,22 @@
+const viewport_geometry = () => {
 
-const geometry = (elem) => {
-  console.clear();
+  const viewport_width = window.innerWidth;
+  const viewport_height = window.innerHeight;
+  const viewport_center_x = viewport_width / 2;
+  const viewport_center_y = viewport_height / 2;
 
+  const document_height1 = document.documentElement.offsetHeight;
+  const document_height2 = document.documentElement.getBoundingClientRect().height;
+  const scroll_offset = window.scrollY;
+
+  // console.log(`scroll_offset: ${scroll_offset}`);
+  // console.log(`document_height1 = ${document_height1},   document_height2 = ${document_height2}`);
+  // console.log(`viewport_height: ${viewport_height}`);
+
+  return {viewport_center_x, viewport_center_y};
+};
+
+const element_geometry = (elem) => {
   // ===============Window Geometry================
 
   const viewport_width = window.innerWidth;
@@ -13,14 +28,14 @@ const geometry = (elem) => {
   const document_height2 = document.documentElement.getBoundingClientRect().height;
   const scroll_offset = window.scrollY;
 
-  console.log(`scroll_offset: ${scroll_offset}`);
-  console.log(`document_height1 = ${document_height1},   document_height2 = ${document_height2}`);
-  console.log(`viewport_height: ${viewport_height}`);
+  // console.log(`scroll_offset: ${scroll_offset}`);
+  // console.log(`document_height1 = ${document_height1},   document_height2 = ${document_height2}`);
+  // console.log(`viewport_height: ${viewport_height}`);
 
   // ===============Element Geometry================
 
   const square_geometry = elem.getBoundingClientRect(); 
-  console.log('square_geometry: ', square_geometry);
+  // console.log('square_geometry: ', square_geometry);
   
   const w = square_geometry.width;
   const h = square_geometry.height;
@@ -38,4 +53,20 @@ const geometry = (elem) => {
   return {viewport_width, viewport_height, viewport_center_x, viewport_center_y, x0, y0, x1, y1, w, h};
 };
 
-export default geometry;
+const get_center_shifts = (viewport_center_x, viewport_center_y, x0, y0) => {
+  let shift_x, shift_y;
+
+  if (viewport_center_x > x0)
+    shift_x = viewport_center_x - x0;
+  else
+    shift_x = -(x0 - viewport_center_x);
+
+  if (viewport_center_y > y0)
+    shift_y = viewport_center_y - y0;
+  else
+    shift_y = -(y0 - viewport_center_y);
+
+  return {shift_x, shift_y};
+};
+
+export {viewport_geometry, element_geometry, get_center_shifts};
