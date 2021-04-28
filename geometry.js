@@ -1,3 +1,5 @@
+// ========================================================
+
 const viewport_geometry = () => {
 
   const viewport_width = window.innerWidth;
@@ -13,26 +15,12 @@ const viewport_geometry = () => {
   // console.log(`document_height1 = ${document_height1},   document_height2 = ${document_height2}`);
   // console.log(`viewport_height: ${viewport_height}`);
 
-  return {viewport_center_x, viewport_center_y};
+  return {viewport_center_x, viewport_center_y, viewport_width, viewport_height};
 };
 
+// ========================================================
+
 const element_geometry = (elem) => {
-  // ===============Window Geometry================
-
-  const viewport_width = window.innerWidth;
-  const viewport_height = window.innerHeight;
-  const viewport_center_x = viewport_width / 2;
-  const viewport_center_y = viewport_height / 2;
-
-  const document_height1 = document.documentElement.offsetHeight;
-  const document_height2 = document.documentElement.getBoundingClientRect().height;
-  const scroll_offset = window.scrollY;
-
-  // console.log(`scroll_offset: ${scroll_offset}`);
-  // console.log(`document_height1 = ${document_height1},   document_height2 = ${document_height2}`);
-  // console.log(`viewport_height: ${viewport_height}`);
-
-  // ===============Element Geometry================
 
   const square_geometry = elem.getBoundingClientRect(); 
   // console.log('square_geometry: ', square_geometry);
@@ -48,10 +36,10 @@ const element_geometry = (elem) => {
   // console.log('offsetTop: ', elem.offsetTop, ',    offsetParent: ', elem.offsetParent);
   // console.log('offsetParent: ', elem.offsetParent);
 
-  // ======================================================
-
-  return {viewport_width, viewport_height, viewport_center_x, viewport_center_y, x0, y0, x1, y1, w, h};
+  return {x0, y0, x1, y1, w, h};
 };
+
+// ========================================================
 
 const get_center_shifts = (viewport_center_x, viewport_center_y, x0, y0) => {
   let shift_x, shift_y;
@@ -68,5 +56,7 @@ const get_center_shifts = (viewport_center_x, viewport_center_y, x0, y0) => {
 
   return {shift_x, shift_y};
 };
+
+// ========================================================
 
 export {viewport_geometry, element_geometry, get_center_shifts};
