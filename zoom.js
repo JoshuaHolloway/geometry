@@ -14,12 +14,12 @@ document.addEventListener('click', () => {
     timeline = gsap.timeline();
     
     boxes.forEach((box, idx) => {
-      const {x0, y0, w, h} = element_geometry(boxes[idx]);
+      const {x0, y0, w, h} = element_geometry(box);
       const {shift_x, shift_y} = get_center_shifts(viewport_center_x, viewport_center_y, x0, y0);
-      timeline.to(boxes[idx], {x: shift_x, y: shift_y}, '<');
+      timeline.to(box, {x: shift_x, y: shift_y}, '<');
       
       let s;
-      const final_gap = 30;
+      const final_gap = 50;
       if (viewport_width < viewport_height) // Scale smaller of two dimensions
         s = (viewport_width - 2*final_gap) / w;
       else
